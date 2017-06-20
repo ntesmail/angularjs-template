@@ -1,5 +1,5 @@
 var AppConfig = {
-    contextPath: '/template-angularjs',
+    contextPath: '/angularjs-template',
     perms: [
         //所有权限都放在叶子节点（没有children的节点）
         {

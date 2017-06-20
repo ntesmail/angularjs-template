@@ -1,13 +1,13 @@
 module.exports = {
-    comment: 'template-angularjs',
+    comment: 'angularjs-template',
     version: '2.0.0',
-    product: 'template-angularjs', //项目名称
-    contextPath: '/template-angularjs', //请求的根路径
+    product: 'angularjs-template', //项目名称
+    contextPath: '/angularjs-template', //请求的根路径
     protocol: 'http', //项目使用的协议
     browserPort: 9300, //给browser sync使用的端口
     port: 9200, //express 起的端口
     hostname: 'localhost', //模拟域名
-    openurl: 'http://localhost:9300/template-angularjs/index.html', //自动打开的url
+    openurl: 'http://localhost:9300/angularjs-template/index.html', //自动打开的url
     rootPath: __dirname, //项目的根目录
     webapp: 'src/main/webapp', //前端代码的根目录
     mock: 'src/test/mock', //mock文件的根目录

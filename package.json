@@ -1,5 +1,5 @@
 {
-    "name": "template-angularjs",
+    "name": "angularjs-template",
     "version": "2.0.0",
     "scripts": {
         "server": "./node_modules/.bin/shark server",
