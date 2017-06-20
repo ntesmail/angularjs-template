@@ -24,7 +24,7 @@
         <div class="form-group form-group-sm">
             <label class="col-sm-1 control-label">时间：</label>
             <div class="col-sm-6">
-                <sharkdaterangepicker ensure datetimecheck ng-model="searchForm.daterange"></sharkdaterangepicker>
+                <sharkdaterangepicker ensure datetimecheck ng-model="daterange"></sharkdaterangepicker>
             </div>
         </div>
         <div class="form-group form-group-sm">
@@ -67,7 +67,7 @@
         </thead>
         <tbody ng-show="itemList.length == 0">
             <tr>
-                <td colspan="5">没有查询到任何数据</td>
+                <td colspan="6">没有查询到任何数据</td>
             </tr>
         </tbody>
         <tbody ng-show="itemList.length > 0">
@@ -93,4 +93,17 @@
             </tr>
         </tbody>
     </table>
+</div>
+<div class="row">
+    <div class="col-sm-5">
+        共{{pagination.total}}条，每页显示
+        <div class="btn-group btn-pagination">
+            <button ng-click="changePageSize(10);" ng-class="{btn:true,'btn-default':true,active:pagination.size==10}">10</button>
+            <button ng-click="changePageSize(20);" ng-class="{btn:true,'btn-default':true,active:pagination.size==20}">20</button>
+            <button ng-click="changePageSize(50);" ng-class="{btn:true,'btn-default':true,active:pagination.size==50}">50</button>
+        </div>
+    </div>
+    <div class="col-sm-7 text-right">
+        <sharkpager name="pager1" current-page="pagination.page" total-page="pagination.totalPage" on-page-changed="pageChanged"></sharkpager>
+    </div>
 </div>

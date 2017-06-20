@@ -3,7 +3,7 @@ angular.module('app.demo.list')
         function ($stateProvider) {
             $stateProvider
                 .state('demo-list-list1', {
-                    url: '/demo-list-list1?rnd&page&size&key&name&begindatetime&enddatetime',
+                    url: '/demo-list-list1?page&size&key&name&begindatetime&enddatetime',
                     template: require('./list1/list1.html'),
                     controller: 'app.demo.list.List1Ctrl',
                     permission: 'list-list1-query',
@@ -31,7 +31,7 @@ angular.module('app.demo.list')
                     permission: 'list-list2'
                 })
                 .state('demo-list-list2.child', {
-                    url: '/child?rnd&page&size&key&name',
+                    url: '/child?refreshtime',
                     template: require('./list2/child/child.html'),
                     controller: 'app.demo.list.List2ChildCtrl',
                     permission: 'list-list2'

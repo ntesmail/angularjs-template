@@ -13,12 +13,13 @@ angular.module('app.demo.list')
             };
             // 搜索条件列表  [必须]
             $scope.searchForm = {
-                begindatetime: 1497024000000,
-                enddatetime: 1497888000000,
-                daterange: null,
+                begindatetime: null,
+                enddatetime: null,
                 name: '',
                 key: ''
             };
+            $scope.daterange = [null, null];
+
             // 校验通过后再查询
             function filterValid(fn) {
                 return function () {
@@ -62,15 +63,17 @@ angular.module('app.demo.list')
             });
 
             function refreshUrl() {
-                $scope.searchForm.begindatetime = $scope.searchForm.daterange[0];
-                $scope.searchForm.enddatetime = $scope.searchForm.daterange[1];
-                var urlParams = angular.extend({ rnd: Date.now() }, $scope.searchForm, $scope.pagination);
-                $state.go('demo-list-list1', urlParams);
+                $scope.searchForm.begindatetime = $scope.daterange[0];
+                $scope.searchForm.enddatetime = $scope.daterange[1];
+                var urlParams = angular.extend({}, $scope.searchForm, $scope.pagination);
+                $state.go('demo-list-list1', urlParams, { reload: true });
             };
-            Common.parseUrl($location, $scope.searchForm, $scope.pagination, { __formatParams: 1, begindatetime: 'number', enddatetime: 'number' });
-            $scope.searchForm.daterange = [$scope.searchForm.begindatetime, $scope.searchForm.enddatetime];
+            Common.parseUrl($state, $scope.searchForm, $scope.pagination);
+            $scope.daterange = [$scope.searchForm.begindatetime, $scope.searchForm.enddatetime];
             $scope.getList();
 
+
+            // 删除
             $scope.deleteItems = function () {
                 var selectedItems = $scope.getSelectedItems();
                 var arr = [];
@@ -85,6 +88,7 @@ angular.module('app.demo.list')
                 }
             };
 
+            // 查看详情
             $scope.detail = function (id) {
                 $state.go('demo-list-list1-detail', { id: id });
             };

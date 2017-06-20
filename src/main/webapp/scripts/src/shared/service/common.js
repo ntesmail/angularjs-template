@@ -1,39 +1,30 @@
 angular.module('app.shared')
-    .factory('common', ['$cacheFactory',
-        function ($cacheFactory) {
+    .factory('common', [
+        function () {
             var service = {
                 ipRegExp: /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/,
                 numRegExp: /^\d{1,}$/,
                 phoneRegExp: /^((\+?86)|(\(\+86\)))?1[3|4|5|6|7|8]\d{9}$/,
                 emailRegExp: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                //url中有复杂对象的缓存
-                paramsCache: $cacheFactory('params-cache'),
                 /**
                  * 从url中获取参数幅值给页面
-                 * @param  {[type]} $location 页面的$location对象
+                 * @param  {[type]} $state 页面的$state对象
                  * @param  {[type]} object ...不定参数
                  * @no return
                  */
-                parseUrl: function ($location) {
-                    var params = $location.search();
-                    var formats = { asc: 'boolean', size: 'number', size2: 'number', page: 'number', page2: 'number', recursion: 'boolean' };
+                parseUrl: function ($state) {
+                    var params = $state.params;
+                    var formats = { asc: 'boolean', size: 'number', page: 'number' };
                     var length = arguments.length;
                     if (arguments[arguments.length - 1].__formatParams === 1) {
                         formats = angular.extend(formats, arguments[arguments.length - 1]);
                         length = arguments.length - 1;
                     }
-                    var cache = this.paramsCache.get($location.path());
                     for (var i = 1; i < length; i++) {
                         for (var p in arguments[i]) {
                             if (typeof params[p] !== "undefined") {
-                                if (params[p].indexOf('___') > -1) {
-                                    if (!this.isEmpty(cache) && !this.isEmpty(cache[params[p]])) {
-                                        arguments[i][p] = cache[params[p]];
-                                    }
-                                    continue;
-                                }
                                 //格式转换
-                                if (formats[p] === "number")
+                                if (formats[p] === "number" || p.indexOf('date') > 0)
                                     arguments[i][p] = Number(params[p]) || 0;
                                 else if (formats[p] === "boolean")
                                     arguments[i][p] = (params[p] === "true" || params[p] === true ? true : false);
@@ -42,40 +33,6 @@ angular.module('app.shared')
                             }
                         }
                     }
-                },
-                /**
-                 * 从页面获取参数生成url
-                 * @param  {[type]} $location 页面的$location对象
-                 * @param  {[type]} object ...不定参数
-                 * @return string   url
-                 */
-                generateUrl: function ($location) {
-                    var params = {};
-                    var ignoreItems = { totalPage: true, total: true, totalPage2: true, total2: true };
-                    for (var i = 1; i < arguments.length; i++) {
-                        angular.extend(params, arguments[i]);
-                    }
-                    for (var p in params) {
-                        if (ignoreItems[p] === true) {
-                            delete params[p];
-                            continue;
-                        }
-                        if (typeof params[p] === "object" && params[p] != null && params[p] instanceof Date)
-                            params[p] = params[p].getTime();
-                        else if (typeof params[p] === "object" && params[p] != null) {
-                            var cache = this.paramsCache.get($location.path());
-                            if (this.isEmpty(cache)) {
-                                cache = {};
-                            }
-                            var key = p + '___' + new Date().getTime();
-                            cache[key] = params[p];
-                            this.paramsCache.put($location.path(), cache);
-                            params[p] = key;
-                        }
-                    }
-                    //查询时间戳
-                    params.rnd = new Date().getTime();
-                    return $location.path() + "?" + $.param(params, true);
                 },
                 //创建一个唯一标识
                 createUUID: (function () {

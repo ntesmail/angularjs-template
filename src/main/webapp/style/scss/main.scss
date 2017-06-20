@@ -64,3 +64,17 @@
 .valid-error-text {
     color: #ff0000 !important;
 }
+
+.myfileupload {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: #4a9ce2;
+    color: #ffffff;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}

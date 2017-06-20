@@ -14,6 +14,8 @@ angular.module('app.demo.list')
             $scope.tabSwitch = function (index) {
                 console.log('tab切换到：' + index);
             };
-            $state.go('demo-list-list2.child');
+            $state.go('demo-list-list2.child',{
+                refreshtime: Date.now()
+            });
         }
     ])
