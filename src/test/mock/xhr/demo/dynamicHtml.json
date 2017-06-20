@@ -1,0 +1,4 @@
+{
+	"code":200,
+	"data":"<textarea ng-model=\"formData.remark\" demo-form-countchars=100 max-limit=5 class=\"form-control\" placeholder=\"请输入备注\"></textarea>"
+}

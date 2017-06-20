@@ -1,0 +1,27 @@
+<style type="text/css">
+    .form-control,
+    .list-group {
+        width: 500px;
+    }
+    .list-group-item.completed {
+        background-color: #4cae4c !important;
+    }
+    a{
+        margin-right: 10px;
+    }
+</style>
+<input class="form-control" ng-model="desc" placeholder="请输入待办事项" ng-keydown="addTodo($event);" />
+<ul class="list-group">
+    <li ng-class="{completed:todo.completed}" class="list-group-item" ng-repeat="todo in todosObservable|async:this track by $index">
+        &nbsp;{{todo.desc}}
+        <a class="pull-right" ng-click="removeTodo(todo);">删除</a>
+        <a ng-if="todo.completed" class="pull-right" ng-click="toggleTodo(todo);">设为未完成</a>
+        <a ng-if="!todo.completed" class="pull-right" ng-click="toggleTodo(todo);">设为完成</a>
+    </li>
+</ul>
+
+<!--<ul class="list-group">
+    <li class="list-group-item" ng-repeat="todo in todos track by $index">
+        &nbsp;{{todo.desc}}<a class="pull-right" ng-click="removeTodo(todo);">删除</a>
+    </li>
+</ul>-->

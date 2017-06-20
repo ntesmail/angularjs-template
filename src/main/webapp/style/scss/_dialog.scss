@@ -1,0 +1,28 @@
+﻿.modal-header {
+    padding: 0 0 0 15px;
+    border-radius: 6px 6px 0 0;
+    .modal-title {
+        line-height: 37px;
+        height: 37px;
+    }
+}
+
+.modal-footer {
+    height: 50px;
+    margin-top: 0;
+    border-radius: 0 0 6px 6px;
+    padding:10px 20px 0;
+    .btn {
+        padding: 4px 12px;
+    }
+    .btn-link {
+        padding: 1px;
+    }
+}
+
+.modal-body {
+}
+
+.modal-lg{
+    width:1000px;
+}

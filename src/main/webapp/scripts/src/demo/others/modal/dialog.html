@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <div class="modal-title">添加管理员
+        <button type="button" class="btn btn-link pull-right" ng-click="cancel();">
+            <span class="icon icon-close"></span>
+        </button>
+    </div>
+</div>
+<div class="modal-body">
+    <form class="form form-horizontal" name="formValidator" role="form" novalidate>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-4 control-label">
+                姓名：
+            </label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="请输入名字" ng-model="adminInfo.nickname" name="nickname">
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-4 control-label">
+                密码：
+            </label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="请输入密码" ng-model="adminInfo.password" name="password">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-click="ok()">确定</button>
+    <button class="btn btn-default" ng-click="cancel()">取消</button>
+</div>

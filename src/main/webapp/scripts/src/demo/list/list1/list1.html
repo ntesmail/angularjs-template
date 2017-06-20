@@ -1,0 +1,96 @@
+<form name="validator" shark-validator class="form form-horizontal" novalidate>
+    <div class="form-group form-group-sm">
+        <div class="col-sm-12">
+            <ol class="breadcrumb">
+                <li><a href="#/home">home</a></li>
+                <li class="active">list1</li>
+            </ol>
+        </div>
+    </div>
+    <div>当前用户：{{userInfo.name}}</div>
+    <div class="u-formborder form-horizontal-label-4-1">
+        <div class="form-group form-group-sm">
+            <label class="col-sm-1 control-label">姓名：</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" ng-model="searchForm.name" name="name">
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-1 control-label">关键字：</label>
+            <div class="col-sm-4">
+                <input class="form-control" type="text" ng-model="searchForm.key" name="key">
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-1 control-label">时间：</label>
+            <div class="col-sm-6">
+                <sharkdaterangepicker ensure datetimecheck ng-model="searchForm.daterange"></sharkdaterangepicker>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <div class="btn-group">
+                <button type="button" class="btn btn-success btn-sm" ng-click="search();">查询</button>
+            </div>
+        </div>
+    </div>
+    <div class="form-group form-group-sm">
+        <div class="col-sm-6">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default btn-sm" ng-click="deleteItems();">删除表格1</button>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="table-wrap">
+    <table checkabletable item-list="itemList" callback="getSelectedItems" class="table table-condensed table-striped table-hover">
+        <thead>
+            <tr class="info">
+                <th class="width-2">
+                    <input type="checkbox" ng-model="isAllItemsChecked"></input>
+                </th>
+                <th>
+                    ID
+                </th>
+                <th>
+                    姓名
+                </th>
+                <th>
+                    学号
+                </th>
+                <th>
+                    班级
+                </th>
+                <th>
+                    操作
+                </th>
+            </tr>
+        </thead>
+        <tbody ng-show="itemList.length == 0">
+            <tr>
+                <td colspan="5">没有查询到任何数据</td>
+            </tr>
+        </tbody>
+        <tbody ng-show="itemList.length > 0">
+            <tr class="animate-repeat" ng-repeat="item in itemList track by $index">
+                <td>
+                    <input type="checkbox" ng-model="item.isItemChecked" item-index="{{$index}}"></input>
+                </td>
+                <td>
+                    {{item.id}}
+                </td>
+                <td>
+                    {{item.name}}
+                </td>
+                <td>
+                    {{item.no}}
+                </td>
+                <td>
+                    {{item.class}}
+                </td>
+                <td>
+                    <a href="javascript:void(0)" ng-click="detail(item.id);" admin-perm perm-no="['list-list1-detail']">查看详细</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

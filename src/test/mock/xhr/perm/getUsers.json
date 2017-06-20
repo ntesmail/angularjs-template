@@ -1,0 +1,21 @@
+{
+    "code": 200,
+    "errorCode": null,
+    "errorMsg": "",
+    "data": {
+        "pagination": {
+            "page": 1,
+            "size": 10,
+            "totalPage": 1,
+            "total": 1
+        },
+        "result": [
+            {
+                "id": 100,
+                "name": "sweetyx",
+                "roleId": 100,
+                "roleName": "一级管理员"
+            }
+        ]
+    }
+}

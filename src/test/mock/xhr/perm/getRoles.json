@@ -1,0 +1,38 @@
+{
+    "code": 200,
+    "errorCode": null,
+    "errorMsg": "",
+    "data": {
+        "pagination": {
+            "page": 1,
+            "size": 10,
+            "totalPage": 1,
+            "total": 2
+        },
+        "result": [
+            {
+                "id": 100,
+                "name": "一级管理员",
+                "permission": [
+                    "form-from1",
+                    "form-from2",
+                    "list-list1-query",
+                    "list-list1-detail",
+                    "list-list2",
+                    "others-modal",
+                    "test-apply",
+                    "perm-user",
+                    "perm-role"
+                ]
+            },{
+                "id": 101,
+                "name": "二级管理员",
+                "permission": [
+                    "form-from1",
+                    "list-list1-query",
+                    "list-list2"
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,106 @@
+﻿/* 列表样式调整 */
+.table > thead > tr > th {
+    font-weight: normal;
+    border-bottom: 1px solid $gray-lighter;
+    text-align:left;
+    vertical-align: middle;
+}
+.table > tbody > tr > td {
+    text-align:left;
+    vertical-align: middle;
+}
+.table-wrap {
+    overflow-x: auto;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.table {
+    border-top: 1px solid $gray-lighter;
+    border-bottom: 1px solid $gray-lighter;
+    > thead {
+        .icon-sort {
+            // 可排序的th特殊样式
+            display: inline-block
+        }
+        .icon-sort-up,.icon-sort-down {
+            display: none;
+        }
+        .asc {
+            .icon-sort-up {
+                display: inline-block
+            }
+            ;
+            .icon-sort {
+                display: none;
+            }
+        }
+        .desc {
+            .icon-sort-down {
+                display: inline-block
+            }
+            ;
+            .icon-sort {
+                display: none;
+            }
+        }
+    }
+}
+.table > tbody + tbody {
+    border-top: 1px solid $gray-lighter;
+}
+
+$table-th-width: 15px;
+/*  定义header中列的最小宽度 */
+.table {
+    .min-1 {
+        min-width: $table-th-width * 1;
+    }
+    .width-1 {
+        width: $table-th-width * 1;
+    }
+    .min-2 {
+        min-width: $table-th-width * 2;
+    }
+    .width-2 {
+        width: $table-th-width * 2;
+    }
+    .min-3 {
+        min-width: $table-th-width * 3;
+    }
+    .min-4 {
+        min-width: $table-th-width * 4;
+    }
+    .min-5 {
+        min-width: $table-th-width * 5;
+    }
+    .min-6 {
+        min-width: $table-th-width * 6;
+    }
+    .min-7 {
+        min-width: $table-th-width * 7;
+    }
+    .min-8 {
+        min-width: $table-th-width * 8;
+    }
+    .min-9 {
+        min-width: $table-th-width * 9;
+    }
+    .min-10 {
+        min-width: $table-th-width * 10;
+    }
+    .min-11 {
+        min-width: $table-th-width * 11;
+    }
+    .min-12 {
+        min-width: $table-th-width * 12;
+    }
+    .min-13 {
+        min-width: $table-th-width * 13;
+    }
+    .min-14 {
+        min-width: $table-th-width * 14;
+    }
+    .min-15 {
+        min-width: $table-th-width * 15;
+    }
+}
